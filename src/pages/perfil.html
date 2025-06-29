@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil do Usuário | VenueHub</title>
+  <link rel="stylesheet" href="../css/perfil.css" />
+</head>
+<body>
+  <div class="container">
+    <section class="profile">
+      <img src="https://via.placeholder.com/100" alt="Avatar" class="avatar"/>
+      <div class="profile-info">
+        <h1>João Silva</h1>
+        <p>Email: joao@email.com</p>
+        <p>Tipo de Conta: Anunciante & Cliente</p>
+      </div>
+      <div class="profile-actions">
+        <button class="btn outline">✏ Editar Perfil</button>
+        <button class="btn danger">🚪 Sair</button>
+      </div>
+    </section>
+
+    <section class="tabs">
+      <button class="tab-btn active" data-tab="anuncios">📢 Meus Anúncios</button>
+      <button class="tab-btn" data-tab="reservas">📅 Locais Reservados</button>
+      <button class="tab-btn" data-tab="favoritos">⭐ Favoritos</button>
+    </section>
+
+    <section id="anuncios" class="tab-content active">
+      <h2>Espaços que você está oferecendo no VenueHub</h2>
+      <p class="section-desc">Esses são os locais que você cadastrou para eventos. Mantenha-os sempre atualizados para atrair mais clientes.</p>
+
+      <div class="card">
+        <h3>Espaço Sunset</h3>
+        <p>Localização: Rua das Flores, 123</p>
+        <p>Capacidade: 150 pessoas</p>
+        <p>Status: Ativo • 12 reservas confirmadas</p>
+      </div>
+
+      <div class="card">
+        <h3>Chácara Estrela</h3>
+        <p>Localização: Estrada Velha, km 10</p>
+        <p>Capacidade: 250 pessoas</p>
+        <p>Status: Em análise • Aguardando aprovação</p>
+      </div>
+    </section>
+
+    <section id="reservas" class="tab-content">
+      <h2>Seus locais reservados</h2>
+      <p class="section-desc">Esses são os espaços que você reservou recentemente para festas, eventos ou reuniões.</p>
+
+      <div class="card">
+        <h3>Espaço Garden Hall</h3>
+        <p>Data da reserva: 12/07/2025</p>
+        <p>Endereço: Av. das Palmeiras, 456</p>
+        <p>Status: Confirmado</p>
+      </div>
+    </section>
+
+    <section id="favoritos" class="tab-content">
+      <h2>Espaços que você favoritou</h2>
+      <p class="section-desc">Locais que chamaram sua atenção. Você pode voltar aqui a qualquer momento para reservar ou comparar.</p>
+
+      <div class="card">
+        <h3>Casa Branca Eventos</h3>
+        <p>Localização: Rua Harmonia, 789</p>
+        <p>Capacidade: 180 pessoas</p>
+        <p>Nota média: ⭐ 4.8 / 5</p>
+      </div>
+    </section>
+  </div>
+
+  
+  <script src="../js/perfil.js"></script>
+</body>
+</html>

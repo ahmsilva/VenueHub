@@ -1,0 +1,117 @@
+:root {
+    --primary: #007BFF;
+    --primary-soft: rgba(0, 123, 255, 0.1);
+    --dark: #212529;
+    --light: #F8F9FA;
+    --gray: #6C757D;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    background-color: #f8f9fa;
+}
+
+/* Header */
+.header {
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: var(--dark);
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary) !important;
+}
+
+.btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+}
+
+.breadcrumb-item a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* Galeria */
+#galeria-fotos .col {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#galeria-fotos .col:hover {
+    opacity: 0.8;
+}
+
+#galeria-fotos img {
+    height: 80px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Card de Detalhes */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+}
+
+/* Comodidades */
+.comodidade-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background-color: var(--primary-soft);
+    border-radius: 50px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.comodidade-badge i {
+    color: var(--primary);
+    margin-right: 0.35rem;
+}
+
+/* Avaliações */
+.avaliacao-card {
+    border-left: 3px solid var(--primary);
+    padding-left: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .sticky-top {
+        position: static !important;
+    }
+    
+    #foto-principal {
+        height: 300px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .breadcrumb {
+        font-size: 0.85rem;
+    }
+    
+    #galeria-fotos img {
+        height: 60px;
+    }
+}

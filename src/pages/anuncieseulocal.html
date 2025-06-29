@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncie Seu Local | VenueHub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/local.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between align-items-center py-3">
+                <div class="logo mb-2 mb-md-0">
+                    <a href="../../index.html">
+                        <img src="../../docs/images/venuelogo.svg" alt="VenueHub Logo" width="180">
+                    </a>
+                </div>
+                <nav class="nav justify-content-center">
+                    <div class="d-flex flex-wrap gap-3 justify-content-center">
+                        <a href="#" class="nav-link active">Anuncie seu Local</a>
+                        <a href="../pages/faleconosco.html" class="nav-link">Fale Conosco</a>
+                        <a href="../pages/quemsomos.html" class="nav-link">Quem somos</a>
+                        <a href="../pages/login.html" class="btn btn-outline-primary">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="anuncio-hero">
+            <div class="container">
+                <div class="row align-items-center min-vh-50 py-5">
+                    <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+                        <h1 class="display-4 fw-bold mb-4">Anuncie Seu Espaço</h1>
+                        <p class="lead mb-5">Aumente suas reservas e mostre seu local para milhares de clientes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Anúncio -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <h2 class="fw-bold mb-4 text-center">Cadastre seu espaço</h2>
+                                
+                                <form id="form-anuncio">
+                                    <!-- Seção 1: Informações Básicas -->
+                                    <div class="mb-5">
+                                        <h4 class="mb-4 border-bottom pb-2"><i class="bi bi-info-circle me-2"></i>Informações Básicas</h4>
+                                        
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="nome-local" class="form-label">Nome do Local*</label>
+                                                <input type="text" class="form-control" id="nome-local" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="tipo-evento" class="form-label">Tipo de Evento*</label>
+                                                <select class="form-select" id="tipo-evento" required>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="Casamento">Casamento</option>
+                                                    <option value="Corporativo">Evento Corporativo</option>
+                                                    <option value="Aniversário">Aniversário</option>
+                                                    <option value="Formatura">Formatura</option>
+                                                    <option value="Outro">Outro</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="capacidade" class="form-label">Capacidade Máxima*</label>
+                                                <input type="number" class="form-control" id="capacidade" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="preco-base" class="form-label">Preço Base (R$)*</label>
+                                                <input type="number" class="form-control" id="preco-base" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="descricao" class="form-label">Descrição Detalhada*</label>
+                                                <textarea class="form-control" id="descricao" rows="4" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Seção 2: Localização -->
+                                    <div class="mb-5">
+                                        <h4 class="mb-4 border-bottom pb-2"><i class="bi bi-geo-alt me-2"></i>Localização</h4>
+                                        
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="cep" class="form-label">CEP*</label>
+                                                <input type="text" class="form-control" id="cep" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="cidade" class="form-label">Cidade*</label>
+                                                <input type="text" class="form-control" id="cidade" required>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <label for="endereco" class="form-label">Endereço*</label>
+                                                <input type="text" class="form-control" id="endereco" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="numero" class="form-label">Número*</label>
+                                                <input type="text" class="form-control" id="numero" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="bairro" class="form-label">Bairro*</label>
+                                                <input type="text" class="form-control" id="bairro" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="complemento" class="form-label">Complemento</label>
+                                                <input type="text" class="form-control" id="complemento">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Seção 3: Fotos -->
+                                    <div class="mb-5">
+                                        <h4 class="mb-4 border-bottom pb-2"><i class="bi bi-camera me-2"></i>Fotos do Local</h4>
+                                        
+                                        <div class="mb-3">
+                                            <label for="fotos" class="form-label">Adicione até 12 fotos*</label>
+                                            <input class="form-control" type="file" id="fotos" multiple accept="image/*" required>
+                                            <div class="form-text">A primeira imagem será usada como capa</div>
+                                        </div>
+                                        
+                                        <div class="row g-3" id="preview-fotos">
+                                            <!-- Preview das fotos será inserido aqui via JS -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Seção 4: Comodidades -->
+                                    <div class="mb-5">
+                                        <h4 class="mb-4 border-bottom pb-2"><i class="bi bi-check-circle me-2"></i>Comodidades</h4>
+                                        
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="estacionamento">
+                                                    <label class="form-check-label" for="estacionamento">Estacionamento</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="wifi">
+                                                    <label class="form-check-label" for="wifi">Wi-Fi</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="ar-condicionado">
+                                                    <label class="form-check-label" for="ar-condicionado">Ar Condicionado</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="sonorizacao">
+                                                    <label class="form-check-label" for="sonorizacao">Sistema de Sonorização</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="cozinha">
+                                                    <label class="form-check-label" for="cozinha">Cozinha Equipada</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="acessibilidade">
+                                                    <label class="form-check-label" for="acessibilidade">Acessibilidade</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Seção 5: Horários -->
+                                    <div class="mb-5">
+                                        <h4 class="mb-4 border-bottom pb-2"><i class="bi bi-clock me-2"></i>Horários de Funcionamento</h4>
+                                        
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="horario-abertura" class="form-label">Abre às*</label>
+                                                <input type="time" class="form-control" id="horario-abertura" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="horario-fechamento" class="form-label">Fecha às*</label>
+                                                <input type="time" class="form-control" id="horario-fechamento" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="funciona-fds">
+                                                    <label class="form-check-label" for="funciona-fds">Funciona nos finais de semana</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Termos e Envio -->
+                                    <div class="mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="termos" required>
+                                            <label class="form-check-label" for="termos">
+                                                Li e aceito os <a href="#" data-bs-toggle="modal" data-bs-target="#modalTermos">Termos de Uso</a> e <a href="#">Política de Privacidade</a>*
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="bi bi-check-circle me-2"></i>Publicar Anúncio
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Termos -->
+        <div class="modal fade" id="modalTermos" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Termos de Uso</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>1. Aceitação dos Termos</h6>
+                        <p>Ao cadastrar seu espaço no VenueHub, você concorda com estes Termos de Uso...</p>
+                        
+                        <h6>2. Responsabilidades do Anunciante</h6>
+                        <p>Você é responsável por todas as informações fornecidas no cadastro...</p>
+                        
+                        <h6>3. Política de Reservas</h6>
+                        <p>O VenueHub atua como intermediário entre locadores e clientes...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="../../docs/images/venuelogo.svg" alt="VenueHub" width="180" class="mb-3">
+                    <p>Conectando você aos melhores espaços para eventos desde 2025.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Espaços</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">São Paulo</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">Belo Horizonte</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">Rio de Janeiro</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contato</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><span class="nav-link p-0 text-white-50">contato@venuehub.com.br</span></li>
+                        <li class="nav-item mb-2"><span class="nav-link p-0 text-white-50">+55 31 9999-9999</span></li>
+                        <li class="nav-item mb-2"><span class="nav-link p-0 text-white-50">Av. Amazonas, 123 - BH/MG</span></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="text-center">
+                <p class="mb-0">© 2025 VenueHub. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script type="module">
+  import { criarLocal } from '../js/api.js';
+
+  document.getElementById('form-anuncio').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+    if (!usuario) {
+      alert('Faça login primeiro!');
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const novoLocal = {
+      nome: document.getElementById('nome-local').value,
+      tipo: document.getElementById('tipo-evento').value,
+      capacidade: parseInt(document.getElementById('capacidade').value),
+      preco: parseFloat(document.getElementById('preco-base').value),
+      descricao: document.getElementById('descricao').value,
+      localidade: document.getElementById('cidade').value,
+      bairro: document.getElementById('bairro').value,
+      proprietarioId: usuario.id,
+      // Adicione outros campos conforme necessário
+    };
+    
+    try {
+      await criarLocal(novoLocal);
+      alert('Local cadastrado com sucesso!');
+      window.location.href = 'perfil.html';
+    } catch (error) {
+      alert('Erro ao cadastrar local: ' + error.message);
+    }
+  });
+</script>
+    <!-- Scripts -->
+    <script src="../js/local.js"></script>
+</body>
+</html>

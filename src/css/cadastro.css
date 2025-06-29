@@ -1,0 +1,269 @@
+/* Estilos Gerais */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --text-color: #2b2d42;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --dark-gray: #6c757d;
+  --white: #ffffff;
+  --error-color: #ef233c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background-color: var(--light-gray);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* topo */
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+  }
+
+  .nav a {
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+}
+
+/* Cadastro */
+.cadastro-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cadastro-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  font-size: 28px;
+}
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.input-field {
+  padding: 12px 15px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.checkbox-group label {
+  font-weight: normal;
+}
+
+.checkbox-group a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.checkbox-group a:hover {
+  text-decoration: underline;
+}
+
+.cadastro-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cadastro-button:hover {
+  background-color: var(--secondary-color);
+}
+/* Footer */
+.footer-text {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--dark-gray);
+}
+
+.footer-text a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+
+.rodape {
+  background-color: #f8f8f8;
+  padding: 30px 20px 20px;
+  font-family: 'Inter', sans-serif;
+  flex-shrink: 0;
+}
+
+.rodape-conteudo {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.coluna h4 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.coluna ul {
+  list-style: none;
+  padding: 0;
+}
+
+.coluna ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.coluna ul li a {
+  text-decoration: none;
+  color: #0e3d4b;
+}
+
+.rodape-baixo {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.rodape-baixo img {
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.rodape-baixo p {
+  font-size: 13px;
+  color: #555;
+}
+/*responsividade*/
+
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .nav {
+    gap: 15px;
+  }
+  
+  .cadastro-container {
+    margin: 30px auto;
+    padding: 30px 20px;
+  }
+  
+  .rodape-conteudo {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .coluna {
+    min-width: 100%;
+  }
+}

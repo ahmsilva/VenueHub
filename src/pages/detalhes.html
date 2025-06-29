@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Local | VenueHub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Lightbox para galeria -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/detalhes.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-between align-items-center py-3">
+                <div class="logo mb-2 mb-md-0">
+                    <a href="../../index.html">
+                        <img src="../../docs/images/venuelogo.svg" alt="VenueHub Logo" width="180">
+                    </a>
+                </div>
+                <nav class="nav justify-content-center">
+                    <div class="d-flex flex-wrap gap-3 justify-content-center">
+                        <a href="../pages/anuncieseulocal.html" class="nav-link">Anuncie seu Local</a>
+                        <a href="../pages/faleconosco.html" class="nav-link">Fale Conosco</a>
+                        <a href="../pages/quemsomos.html" class="nav-link">Quem somos</a>
+                        <a href="../pages/login.html" class="btn btn-outline-primary">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="bg-light py-3">
+            <div class="container">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" id="breadcrumb-categoria">Casamentos</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-local">Buffet Pampulha</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Seção Principal -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <!-- Galeria de Fotos -->
+                    <div class="col-lg-7">
+                        <div class="mb-4">
+                            <img id="foto-principal" src="" class="img-fluid rounded-4 w-100 shadow" alt="Foto principal" style="height: 400px; object-fit: cover;">
+                        </div>
+                        <div class="row g-3" id="galeria-fotos">
+                            <!-- Fotos serão inseridas via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Detalhes do Local -->
+                    <div class="col-lg-5">
+                        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <h1 id="nome-local" class="h2 fw-bold mb-0">Buffet Pampulha</h1>
+                                    <span id="avaliacao" class="badge bg-primary fs-6">4.8 ⭐</span>
+                                </div>
+
+                                <div class="d-flex align-items-center mb-4">
+                                    <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                                    <span id="endereco" class="text-muted">Av. Otacílio Negrão de Lima, 1650 - Pampulha, Belo Horizonte</span>
+                                </div>
+
+                                <div id="descricao" class="mb-4">
+                                    <p>Espaço premium para casamentos com vista para a Lagoa da Pampulha, capacidade para 300 pessoas, estrutura completa para recepções sofisticadas.</p>
+                                </div>
+
+                                <hr>
+
+                                <div class="mb-4">
+                                    <h3 class="h5 fw-bold mb-3"><i class="bi bi-list-check me-2"></i>Detalhes</h3>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-people-fill text-primary me-2"></i>
+                                                <div>
+                                                    <small class="text-muted">Capacidade</small>
+                                                    <p id="capacidade" class="mb-0 fw-bold">300 pessoas</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-cash-coin text-primary me-2"></i>
+                                                <div>
+                                                    <small class="text-muted">Preço base</small>
+                                                    <p id="preco" class="mb-0 fw-bold">R$ 15.000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-clock-fill text-primary me-2"></i>
+                                                <div>
+                                                    <small class="text-muted">Horário</small>
+                                                    <p id="horario" class="mb-0 fw-bold">08:00 - 00:00</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-calendar-event text-primary me-2"></i>
+                                                <div>
+                                                    <small class="text-muted">Tipo</small>
+                                                    <p id="tipo" class="mb-0 fw-bold">Casamento</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="mb-4">
+                                    <h3 class="h5 fw-bold mb-3"><i class="bi bi-check-circle-fill me-2"></i>Comodidades</h3>
+                                    <div class="row" id="comodidades">
+                                        <!-- Comodidades serão inseridas via JS -->
+                                    </div>
+                                </div>
+
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-lg py-3">
+                                        <i class="bi bi-calendar-plus me-2"></i>Reservar Agora
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        <i class="bi bi-chat-left-text me-2"></i>Fale com o Anunciante
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa e Localização -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h4 fw-bold mb-4"><i class="bi bi-geo-alt-fill text-primary me-2"></i>Localização</h2>
+                                <div id="mapa" style="height: 400px; background-color: #eee; border-radius: 8px;">
+                                    <!-- Mapa será inserido via JS -->
+                                </div>
+                                <div class="mt-3">
+                                    <a href="#" id="link-maps" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        <i class="bi bi-arrow-up-right-square me-1"></i>Ver rotas no Google Maps
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avaliações -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h4 fw-bold mb-4"><i class="bi bi-star-fill text-primary me-2"></i>Avaliações</h2>
+                                
+                                <div class="row align-items-center mb-4">
+                                    <div class="col-md-3 text-center">
+                                        <div class="display-4 fw-bold text-primary">4.8</div>
+                                        <div class="mb-2">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-half text-warning"></i>
+                                        </div>
+                                        <small class="text-muted">Baseado em 128 avaliações</small>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row align-items-center g-2">
+                                            <div class="col-auto text-end" style="width: 50px;">5 <i class="bi bi-star-fill text-warning"></i></div>
+                                            <div class="col">
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 85%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">85%</div>
+                                        </div>
+                                        <!-- Repetir para outras avaliações -->
+                                    </div>
+                                </div>
+
+                                <div id="avaliacoes-lista">
+                                    <!-- Avaliações serão inseridas via JS -->
+                                </div>
+
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-outline-primary">Carregar mais avaliações</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="../../docs/images/venuelogo.svg" alt="VenueHub" width="180" class="mb-3">
+                    <p>Conectando você aos melhores espaços para eventos desde 2025.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Espaços</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">São Paulo</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">Belo Horizonte</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white-50">Rio de Janeiro</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="h5 mb-3">Contato</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><span class="nav-link p-0 text-white-50">contato@venuehub.com.br</span></li>
+                        <li class="nav-item mb-2"><span class="nav-link p-0 text-white-50">+55 31 9999-9999</span></li>
+                        <li class="nav-item mb-2"><span class="nav-link p-0 text-white-50">Av. Amazonas, 123 - BH/MG</span></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="text-center">
+                <p class="mb-0">© 2025 VenueHub. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API&callback=initMap" async defer></script>
+    <!-- Scripts -->
+    <script src="../js/detalhes.js"></script>
+</body>
+</html>

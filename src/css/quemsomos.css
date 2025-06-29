@@ -1,0 +1,83 @@
+:root {
+  --primary: #007BFF;
+  --primary-soft: rgba(0, 123, 255, 0.1);
+  --dark: #212529;
+  --light: #F8F9FA;
+  --gray: #6C757D;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--dark);
+}
+
+/* Header */
+.header {
+  background-color: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: var(--dark);
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary) !important;
+}
+
+.btn-outline-primary {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+}
+
+/* Hero Section */
+.quem-somos-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('../../docs/images/hero-about.jpg') center/cover;
+  color: white;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Cards */
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Icons */
+.icon-lg {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .quem-somos-hero {
+      min-height: 50vh;
+  }
+  
+  .display-4 {
+      font-size: 2.5rem;
+  }
+}
