@@ -15,7 +15,7 @@ const formatPrice = (value) => {
 };
 
 /**
- * Formata um número de telefone no padrão brasileiro.
+
  * @param {string} value - O número de telefone não formatado.
  * @returns {string} O telefone formatado.
  */

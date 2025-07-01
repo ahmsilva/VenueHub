@@ -127,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (path.startsWith('#venues/') && !path.endsWith('/edit')) {
                 const id = path.split('/')[1];
                 const venue = await api.get(`/locais/${id}`);
-                const isOwner = auth.isLoggedIn() && parseInt(auth.getUserId()) === venue.usuarioId;
+                // CORREÇÃO 1: Comparar IDs como strings
+                const isOwner = auth.isLoggedIn() && auth.getUserId() === venue.usuarioId;
                 appRoot.innerHTML = templates.venueDetailsPage(venue, isOwner);
             } else if (path === '#login') {
                 if (auth.isLoggedIn()) return location.hash = '#profile';
@@ -142,7 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (path.endsWith('/edit')) {
                     const id = path.split('/')[1];
                     venue = await api.get(`/locais/${id}`);
-                    if (parseInt(auth.getUserId()) !== venue.usuarioId) {
+                    // CORREÇÃO 2: Comparar IDs como strings para permissão de edição
+                    if (auth.getUserId() !== venue.usuarioId) {
                         alert('Você não tem permissão para editar este local.');
                         return location.hash = '#home';
                     }
@@ -226,7 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     imagemUrl: imageUrl,
                     descricao: e.target.descricao.value,
                     categorias: selectedCategories,
-                    usuarioId: parseInt(auth.getUserId()),
+                    // CORREÇÃO 3: Salvar o ID do usuário como string
+                    usuarioId: auth.getUserId(),
                     amenities: [], // Em um formulário real, coletaríamos isso
                     unavailable_dates: [] // Em um formulário real, coletaríamos isso
                 };

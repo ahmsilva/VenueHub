@@ -13,15 +13,9 @@
       "senha": "456"
     },
     {
-      "id": "b2bc",
-      "nome": "Boris Goon",
-      "email": "gooner@gmail.com",
-      "senha": "goon"
-    },
-    {
-      "id": "b13f",
-      "nome": "Joaozinho ",
-      "email": "teste@gmail.com",
+      "id": "7568",
+      "nome": "Raff Sigma",
+      "email": "raff@gmail.com",
       "senha": "123"
     }
   ],
@@ -233,6 +227,24 @@
       "amenities": [],
       "unavailable_dates": [],
       "id": "10"
+    },
+    {
+      "nome": "Teste",
+      "endereco": "teste",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "capacidade": 12,
+      "telefone": "21955558888",
+      "preco": "180",
+      "imagemUrl": "./src/img/ceuazul.jpeg",
+      "descricao": "a",
+      "categorias": [
+        "Ao ar livre"
+      ],
+      "usuarioId": "7568",
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "2205"
     }
   ]
 }
