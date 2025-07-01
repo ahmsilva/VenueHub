@@ -1,0 +1,175 @@
+/* src/css/styles.css */
+
+/* Importa a fonte Inter do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* Um cinza muito claro */
+}
+
+/* --- HERO BANNER --- */
+#hero-banner {
+    position: relative;
+    padding: 8rem 1.5em; /* Aumenta o padding vertical */
+    min-height: 450px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-image: url('../img/banner.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: white;
+    margin-bottom: -4rem; 
+    z-index: 10;
+}
+
+#hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: -1;
+}
+
+#hero-banner h1 {
+    font-weight: 900; /* Black */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- FILTERS --- */
+#filter-bar {
+    position: relative;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    margin-bottom: 3rem;
+    z-index: 20;
+}
+
+#amenities-list label {
+    background-color: #f3f4f6;
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.875rem;
+    user-select: none;
+}
+
+#amenities-list input[type="checkbox"] {
+    display: none; /* Esconde o checkbox original */
+}
+
+#amenities-list input[type="checkbox"]:checked + span {
+    background-color: #4f46e5;
+    color: white;
+}
+
+
+/* Animação de entrada para elementos */
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos e animações para os cards de locais */
+.venue-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 0.75rem; /* cantos mais arredondados */
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.venue-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.venue-card img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.venue-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Botões com estilo mais moderno */
+.btn {
+    display: inline-block;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #4f46e5; /* Indigo 600 */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #4338ca; /* Indigo 700 */
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #dc2626; /* Red 600 */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #b91c1c; /* Red 700 */
+    transform: translateY(-2px);
+}
+
+/* Estilos para formulários */
+form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+form input, form textarea, form select {
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px #a5b4fc;
+    outline: none;
+}
+
+/* Estilos para os checkboxes de Categoria no formulário */
+#form-categories-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    #form-categories-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

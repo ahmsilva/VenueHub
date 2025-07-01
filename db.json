@@ -2,156 +2,237 @@
   "usuarios": [
     {
       "id": "1",
-      "nome": "João Silva",
-      "email": "joao@email.com",
-      "senha": "senha123",
-      "tipo": "anunciante"
+      "nome": "Ana Clara",
+      "email": "ana@email.com",
+      "senha": "123"
     },
     {
       "id": "2",
-      "nome": "Maria Souza",
-      "email": "maria@email.com",
-      "senha": "senha456",
-      "tipo": "cliente"
+      "nome": "Bruno Costa",
+      "email": "bruno@email.com",
+      "senha": "456"
     },
     {
-      "id": "08fb",
-      "nome": "André Henrique",
-      "email": "andre.henri2004@gmail.com",
-      "senha": "123",
-      "tipo": "cliente"
+      "id": "b2bc",
+      "nome": "Boris Goon",
+      "email": "gooner@gmail.com",
+      "senha": "goon"
+    },
+    {
+      "id": "b13f",
+      "nome": "Joaozinho ",
+      "email": "teste@gmail.com",
+      "senha": "123"
     }
   ],
   "locais": [
     {
-      "id": "1",
-      "nome": "Buffet Pampulha",
-      "imagem": "../docs/images/buffet-pampulha.jpg",
-      "descricao": "Espaço premium para casamentos com vista para a Lagoa da Pampulha",
-      "tipo": "Casamento",
-      "localidade": "Belo Horizonte",
-      "bairro": "Pampulha",
-      "capacidade": 300,
-      "preco": 15000,
-      "avaliacao": 4.8,
-      "fotos": [
-        "../docs/images/pampulha-1.jpg",
-        "../docs/images/pampulha-2.jpg",
-        "../docs/images/pampulha-3.jpg"
+      "nome": "Salão de Festas Céu Azul",
+      "endereco": "Rua das Primaveras, 123, Bairro das Flores",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "capacidade": 200,
+      "telefone": "31999991111",
+      "preco": "250000",
+      "imagemUrl": "./src/img/ceuazul.jpeg",
+      "descricao": "Um espaço amplo e moderno, perfeito para casamentos, aniversários e eventos corporativos.",
+      "categorias": [
+        "Casamento",
+        "Aniversário",
+        "Corporativo"
       ],
-      "proprietarioId": 1
+      "usuarioId": 1,
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "1"
     },
     {
       "id": "2",
-      "nome": "BI72 Espaço",
-      "imagem": "../docs/images/bi72-1.jpg",
-      "descricao": "Moderno espaço corporativo com tecnologia de ponta",
-      "tipo": "Corporativo",
-      "localidade": "São Paulo",
-      "bairro": "Itaim Bibi",
+      "usuarioId": 1,
+      "nome": "Espaço Verde Eventos",
+      "endereco": "Avenida dos Jardins, 456, Bairro Floresta",
+      "cidade": "Contagem",
+      "estado": "MG",
+      "telefone": "31988882222",
+      "descricao": "Local ao ar livre com vasta área verde, ideal para eventos diurnos e cerimônias.",
+      "capacidade": 300,
+      "preco": "3500.00",
+      "categorias": [
+        "Casamento",
+        "Ao ar livre"
+      ],
+      "amenities": [
+        "Área Externa",
+        "Estacionamento",
+        "Permite Pets",
+        "Piscina"
+      ],
+      "unavailable_dates": [
+        "2025-07-25"
+      ],
+      "imagemUrl": "./src/img/local2.jpg"
+    },
+    {
+      "nome": "Auditório Central Tech",
+      "endereco": "Rua da Tecnologia, 789, Centro",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
       "capacidade": 150,
-      "preco": 8500,
-      "avaliacao": 4.6,
-      "fotos": [
-        "../docs/images/bi72-1.jpg",
-        "../docs/images/bi72-2.jpg"
+      "telefone": "31977773333",
+      "preco": "180000",
+      "imagemUrl": "./src/img/local5.jpg",
+      "descricao": "Auditório moderno com equipamentos de última geração para palestras, workshops e conferências.",
+      "categorias": [
+        "Corporativo",
+        "Palestra"
       ],
-      "proprietarioId": 1
+      "usuarioId": 2,
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "3"
     },
     {
-      "id": "3",
-      "nome": "Buffet Catharina",
-      "imagem": "../docs/images/catharina-1.jpg",
-      "descricao": "Ambiente rústico-chique perfeito para festas intimistas",
-      "tipo": "Aniversário",
-      "localidade": "Rio de Janeiro",
-      "bairro": "Leblon",
-      "capacidade": 120,
-      "preco": 12000,
-      "avaliacao": 4.9,
-      "fotos": [
-        "../docs/images/catharina-1.jpg",
-        "../docs/images/catharina-2.jpg"
+      "nome": "Rooftop Panorâmico",
+      "endereco": "Avenida Paulista, 1000, Cobertura",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "capacidade": 80,
+      "telefone": "11911114444",
+      "preco": "450000",
+      "imagemUrl": "./src/img/local3.jpg",
+      "descricao": "Vista deslumbrante da cidade, ideal para coquetéis e eventos sociais exclusivos.",
+      "categorias": [
+        "Aniversário",
+        "Corporativo"
       ],
-      "proprietarioId": 1
-    },
-    {
-      "id": "4",
-      "nome": "Espaço Vila Madá",
-      "imagem": "../docs/images/fa51e90a-ae75-401e-8065-26a85c8fb547.jpeg",
-      "descricao": "Galeria de arte transformada em espaço para eventos criativos",
-      "tipo": "Formatura",
-      "localidade": "São Paulo",
-      "bairro": "Vila Madalena",
-      "capacidade": 200,
-      "preco": 9800,
-      "avaliacao": 4.7,
-      "fotos": [
-        "../docs/images/fa51e90a-ae75-401e-8065-26a85c8fb547.jpeg",
-        "../docs/images/vilamada.jpg"
-      ],
-      "proprietarioId": 1
+      "usuarioId": 2,
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "4"
     },
     {
       "id": "5",
-      "nome": "Palácio das Convenções",
-      "imagem": "../docs/images/banner-palacio-convencoes.jpg",
-      "descricao": "Espaço luxuoso para grandes eventos e convenções",
-      "tipo": "Corporativo",
-      "localidade": "Belo Horizonte",
-      "bairro": "Savassi",
-      "capacidade": 500,
-      "preco": 25000,
-      "avaliacao": 4.5,
-      "fotos": [
-        "../docs/images/banner-palacio-convencoes.jpg",
-        "../docs/images/banner-palacio-convencoes2.jpeg"
+      "usuarioId": 1,
+      "nome": "Galpão Industrial Criativo",
+      "endereco": "Rua dos Artistas, 50, Vila Madalena",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "telefone": "11922225555",
+      "descricao": "Espaço versátil com pé direito alto, perfeito para feiras, exposições e festas temáticas.",
+      "capacidade": 400,
+      "preco": "3200.00",
+      "categorias": [
+        "Aniversário",
+        "Corporativo",
+        "Show/Concerto"
       ],
-      "proprietarioId": 1
+      "amenities": [
+        "Estacionamento",
+        "Wi-Fi",
+        "Acessibilidade"
+      ],
+      "unavailable_dates": [],
+      "imagemUrl": "./src/img/local5.jpg"
     },
     {
-      "id": "6",
-      "nome": "Jardim Botânico Eventos",
-      "imagem": "../docs/images/jardim.jpg",
-      "descricao": "Eventos em meio à natureza com estrutura completa",
-      "tipo": "Casamento",
-      "localidade": "Rio de Janeiro",
-      "bairro": "Jardim Botânico",
+      "nome": "Casa de Campo Aconchegante",
+      "endereco": "Estrada da Montanha, Km 5",
+      "cidade": "Campos do Jordão",
+      "estado": "SP",
+      "capacidade": 60,
+      "telefone": "12933336666",
+      "preco": "280000",
+      "imagemUrl": "./src/img/local12.png",
+      "descricao": "Refúgio charmoso nas montanhas, ideal para casamentos intimistas e retiros corporativos.",
+      "categorias": [
+        "Casamento",
+        "Ao ar livre"
+      ],
+      "usuarioId": 2,
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "6"
+    },
+    {
+      "nome": "Salão Nobre Histórico",
+      "endereco": "Praça da Liberdade, 100",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "capacidade": 250,
+      "telefone": "31944447777",
+      "preco": "550000",
+      "imagemUrl": "./src/img/local10.jpg",
+      "descricao": "Um salão com arquitetura clássica, perfeito para eventos formais e cerimônias de gala.",
+      "categorias": [
+        "Casamento",
+        "Corporativo"
+      ],
+      "usuarioId": 1,
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "7"
+    },
+    {
+      "nome": "Espaço de Eventos Beira-Mar",
+      "endereco": "Avenida Atlântica, 200",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
       "capacidade": 180,
-      "preco": 18000,
-      "avaliacao": 4.9,
-      "fotos": [
-        "../docs/images/banner-palacio-convencoes.jpg"
+      "telefone": "21955558888",
+      "preco": "600000",
+      "imagemUrl": "./src/img/local8.jpeg",
+      "descricao": "Localização privilegiada com vista para o mar, ideal para festas de ano novo e eventos de verão.",
+      "categorias": [
+        "Casamento",
+        "Aniversário",
+        "Ao ar livre"
       ],
-      "proprietarioId": 1
-    }
-  ],
-  "reservas": [
-    {
-      "id": "1",
-      "localId": 1,
       "usuarioId": 2,
-      "data": "2025-07-12",
-      "status": "confirmado"
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "8"
     },
     {
-      "id": "2",
-      "localId": 3,
-      "usuarioId": 2,
-      "data": "2025-08-15",
-      "status": "pendente"
-    }
-  ],
-  "favoritos": [
-    {
-      "id": "1",
-      "usuarioId": 2,
-      "localId": 1
+      "id": "9",
+      "usuarioId": 1,
+      "nome": "Estúdio Fotográfico Moderno",
+      "endereco": "Rua Augusta, 900",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "telefone": "11966669999",
+      "descricao": "Estúdio com fundo infinito e iluminação profissional, perfeito para workshops e pequenas palestras.",
+      "capacidade": 40,
+      "preco": "950.00",
+      "categorias": [
+        "Palestra",
+        "Corporativo"
+      ],
+      "amenities": [
+        "Wi-Fi",
+        "Projetor",
+        "Ar Condicionado"
+      ],
+      "unavailable_dates": [],
+      "imagemUrl": "./src/img/local9.jpg"
     },
     {
-      "id": "2",
+      "nome": "Churrascaria Gaúcha",
+      "endereco": "Avenida do Contorno, 5000",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "capacidade": 120,
+      "telefone": "31977770000",
+      "preco": "150000",
+      "imagemUrl": "./src/img/local13.jpg",
+      "descricao": "Amplo salão com churrasqueira profissional, ideal para confraternizações e aniversários.",
+      "categorias": [
+        "Aniversário",
+        "Corporativo"
+      ],
       "usuarioId": 2,
-      "localId": 4
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "10"
     }
   ]
 }
