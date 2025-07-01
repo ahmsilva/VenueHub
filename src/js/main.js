@@ -286,52 +286,52 @@ document.addEventListener('DOMContentLoaded', () => {
      * Atualização da Navegação
      */
     const updateNav = () => {
-        const navLinks = document.getElementById('nav-links');
-        const mobileNavLinks = document.getElementById('mobile-nav-links');
-        const isLoggedIn = auth.isLoggedIn();
+    const navLinks = document.getElementById('nav-links');
+    const mobileNavLinks = document.getElementById('mobile-nav-links');
+    const isLoggedIn = auth.isLoggedIn();
 
-        const commonLinks = `
-            <a href="#home" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-            <a href="#locais" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Explorar</a>
-        `;
-        const loggedOutLinks = `
-            <a href="#login" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Login</a>
-            <a href="#register" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200">Cadastro</a>
-        `;
-        const loggedInLinks = `
-            <a href="#profile" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Meu Perfil</a>
-            <a href="#" id="logout-btn" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Sair</a>
-        `;
-        
-        const mobileCommon = `
-            <a href="#home" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
-            <a href="#locais" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Explorar</a>
-        `;
-        const mobileLoggedOut = `
-            <a href="#login" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Login</a>
-            <a href="#register" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Cadastro</a>`;
-        const mobileLoggedIn = `
-            <a href="#profile" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Meu Perfil</a>
-            <a href="#" id="mobile-logout-btn" class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Sair</a>`;
+    const commonLinks = `
+        <a href="#home" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Home</a>
+        <a href="#locais" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Explorar</a>
+    `;
+    const loggedOutLinks = `
+        <a href="#login" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Login</a>
+        <a href="#register" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#134556] bg-[#e8f3f6] hover:bg-[#d0e9f0]">Cadastro</a>
+    `;
+    const loggedInLinks = `
+        <a href="#profile" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Meu Perfil</a>
+        <a href="#" id="logout-btn" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Sair</a>
+    `;
+    
+    const mobileCommon = `
+        <a href="#home" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Home</a>
+        <a href="#locais" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Explorar</a>
+    `;
+    const mobileLoggedOut = `
+        <a href="#login" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Login</a>
+        <a href="#register" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Cadastro</a>`;
+    const mobileLoggedIn = `
+        <a href="#profile" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Meu Perfil</a>
+        <a href="#" id="mobile-logout-btn" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Sair</a>`;
 
-        navLinks.innerHTML = isLoggedIn ? commonLinks + loggedInLinks : commonLinks + loggedOutLinks;
-        mobileNavLinks.innerHTML = isLoggedIn ? mobileCommon + mobileLoggedIn : mobileCommon + mobileLoggedOut;
+    navLinks.innerHTML = isLoggedIn ? commonLinks + loggedInLinks : commonLinks + loggedOutLinks;
+    mobileNavLinks.innerHTML = isLoggedIn ? mobileCommon + mobileLoggedIn : mobileCommon + mobileLoggedOut;
 
-        document.querySelectorAll('#logout-btn, #mobile-logout-btn').forEach(btn => {
-            const newBtn = btn.cloneNode(true);
-            btn.parentNode.replaceChild(newBtn, btn);
-            newBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                auth.logout();
-                updateNav();
-                location.hash = '#home';
-            });
+    document.querySelectorAll('#logout-btn, #mobile-logout-btn').forEach(btn => {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        newBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            auth.logout();
+            updateNav();
+            location.hash = '#home';
         });
+    });
 
-        document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-    };
+    document.getElementById('mobile-menu-button').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+};
 
     /**
      * Inicialização da Aplicação

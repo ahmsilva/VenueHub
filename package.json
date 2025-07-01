@@ -1,0 +1,15 @@
+{
+  "name": "venuehub-api",
+  "version": "1.0.0",
+  "description": "JSON-Server API for VenueHub",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --host 0.0.0.0"
+  },
+  "dependencies": {
+    "json-server": "^0.17.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

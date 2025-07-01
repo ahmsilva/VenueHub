@@ -83,10 +83,10 @@ export const templates = {
                     <a href="#venues/${venue.id}">${venue.nome}</a>
                 </h3>
                 <p class="text-sm text-gray-500 mt-1 truncate">${venue.cidade}, ${venue.estado}</p>
-                <p class="text-lg font-bold text-indigo-600 mt-2">${formatPrice(venue.preco)}</p>
+                <p class="text-lg font-bold text-[#195a6f] mt-2">${formatPrice(venue.preco)}</p>
                 <div class="mt-3 flex items-center justify-between">
                     <span class="text-sm text-gray-600">Capacidade: ${venue.capacidade}</span>
-                    <a href="#venues/${venue.id}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">Ver Detalhes &rarr;</a>
+                    <a href="#venues/${venue.id}" class="text-sm font-medium text-[#195a6f] hover:text-[#134556]">Ver Detalhes &rarr;</a>
                 </div>
             </div>
         </div>
@@ -103,8 +103,7 @@ export const templates = {
                 <h2 class="text-center text-3xl font-bold text-gray-800 mb-2">Locais em Destaque</h2>
                 <p class="text-center text-gray-500 mb-10">Uma seleção dos nossos melhores espaços para você.</p>
                 <div id="venues-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cards dos locais em destaque serão inseridos aqui -->
-                </div>
+                    </div>
             </div>
         </div>
     `,
@@ -117,8 +116,7 @@ export const templates = {
             </div>
             ${templates.filterBar()}
             <div id="venues-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                <!-- Cards de todos os locais serão inseridos aqui -->
-            </div>
+                </div>
              <div id="no-results" class="hidden text-center text-gray-500 bg-gray-100 p-8 rounded-lg">
                 Nenhum local encontrado com os filtros selecionados.
             </div>
@@ -135,7 +133,7 @@ export const templates = {
                         <p class="text-md text-gray-500 mt-1">${venue.endereco}, ${venue.cidade} - ${venue.estado}</p>
                     </div>
                     <div class="mt-4 md:mt-0 text-left md:text-right">
-                        <span class="text-3xl font-bold text-indigo-600">${formatPrice(venue.preco)}</span>
+                        <span class="text-3xl font-bold text-[#195a6f]">${formatPrice(venue.preco)}</span>
                         <p class="text-sm text-gray-500">por evento</p>
                     </div>
                 </div>
@@ -148,7 +146,7 @@ export const templates = {
                  <div class="mt-6 border-t pt-6">
                     <h2 class="text-xl font-semibold text-gray-800">Estrutura</h2>
                     <div class="mt-3 flex flex-wrap gap-2">
-                        ${(venue.amenities || []).map(item => `<span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${item}</span>`).join('')}
+                        ${(venue.amenities || []).map(item => `<span class="bg-[#e8f3f6] text-[#134556] text-xs font-medium px-2.5 py-0.5 rounded-full">${item}</span>`).join('')}
                     </div>
                 </div>
 
@@ -197,7 +195,7 @@ export const templates = {
                         </button>
                     </div>
                     <p class="text-center text-sm text-gray-600 mt-6">
-                        Não tem conta? <a class="font-medium text-indigo-600 hover:text-indigo-500" href="#register">Cadastre-se</a>
+                        Não tem conta? <a class="font-medium text-[#195a6f] hover:text-[#217a94]" href="#register">Cadastre-se</a>
                     </p>
                 </form>
             </div>
@@ -228,7 +226,7 @@ export const templates = {
                         </button>
                     </div>
                      <p class="text-center text-sm text-gray-600 mt-6">
-                        Já tem conta? <a class="font-medium text-indigo-600 hover:text-indigo-500" href="#login">Faça Login</a>
+                        Já tem conta? <a class="font-medium text-[#195a6f] hover:text-[#217a94]" href="#login">Faça Login</a>
                     </p>
                 </form>
             </div>
@@ -253,7 +251,7 @@ export const templates = {
                         <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="imagem">Nome do Arquivo de Imagem</label>
                             <input class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700" id="imagem" type="text" placeholder="ex: meu-local.jpg" value="${imageName}" required>
-                            <p class="text-xs text-gray-500 mt-1">A imagem deve ser adicionada manualmente na pasta 'src/img' do projeto.</p>
+                            <p class="text-xs text-gray-500 mt-1">A imagem deve ser adicionada manually na pasta 'src/img' do projeto.</p>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -288,7 +286,7 @@ export const templates = {
                             <div id="form-categories-list">
                                 ${allCategories.map(cat => `
                                     <label class="flex items-center space-x-2">
-                                        <input type="checkbox" name="categoria" value="${cat}" class="rounded border-gray-300 text-indigo-600 shadow-sm" ${(venue.categorias || []).includes(cat) ? 'checked' : ''}>
+                                        <input type="checkbox" name="categoria" value="${cat}" class="rounded border-gray-300 text-[#195a6f] shadow-sm" ${(venue.categorias || []).includes(cat) ? 'checked' : ''}>
                                         <span>${cat}</span>
                                     </label>
                                 `).join('')}

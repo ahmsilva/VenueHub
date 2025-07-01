@@ -230,7 +230,7 @@
     },
     {
       "nome": "Teste",
-      "endereco": "teste",
+      "endereco": "Rua Teste,13",
       "cidade": "São Paulo",
       "estado": "SP",
       "capacidade": 12,
@@ -239,6 +239,7 @@
       "imagemUrl": "./src/img/ceuazul.jpeg",
       "descricao": "a",
       "categorias": [
+        "Aniversário",
         "Ao ar livre"
       ],
       "usuarioId": "7568",

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="h-full">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +14,14 @@
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body class="body-wrapper">
 
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-40">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a href="#home" class="flex items-center gap-2 text-2xl font-bold text-indigo-600">
+                <a href="#home" class="flex items-center gap-2 text-2xl font-bold text-[#195a6f]">
                     <img src="./src/img/logo.png" alt="VenueHub Logo" class="h-8">
                     <span>VenueHub</span>
                 </a>
@@ -29,7 +31,8 @@
                 <div class="sm:hidden">
                     <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </button>
                 </div>
@@ -54,10 +57,11 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-1">
                     <a href="#home" class="flex items-center gap-2 text-2xl font-bold">
-                        <img src="./src/img/logo.png" alt="VenueHub Logo" class="h-8 bg-white p-1 rounded-sm">
+                        <img src="./src/img/logo.png" alt="VenueHub Logo" class="h-10">
                         <span>VenueHub</span>
                     </a>
-                    <p class="mt-4 text-gray-400 text-sm">A plataforma definitiva para encontrar o local perfeito para o seu evento.</p>
+                    <p class="mt-4 text-gray-400 text-sm">A plataforma definitiva para encontrar o local perfeito para o
+                        seu evento.</p>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold tracking-wider uppercase">Navegação</h3>
@@ -78,7 +82,8 @@
                     <h3 class="text-sm font-semibold tracking-wider uppercase">Contato</h3>
                     <ul class="mt-4 space-y-2 text-gray-400">
                         <li class="flex items-center gap-2"><i class="fa-solid fa-phone"></i> (31) 9999-8888</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i> contato@venuehub.com</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i> contato@venuehub.com
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -98,9 +103,11 @@
     <div id="delete-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50">
         <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm mx-4 fade-in">
             <h3 class="text-lg font-medium text-gray-900">Confirmar Exclusão</h3>
-            <p class="mt-2 text-sm text-gray-600">Você tem certeza que deseja excluir este local? Esta ação não pode ser desfeita.</p>
+            <p class="mt-2 text-sm text-gray-600">Você tem certeza que deseja excluir este local? Esta ação não pode ser
+                desfeita.</p>
             <div class="mt-4 flex justify-end space-x-3">
-                <button id="cancel-delete-btn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300">Cancelar</button>
+                <button id="cancel-delete-btn"
+                    class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300">Cancelar</button>
                 <button id="confirm-delete-btn" class="btn btn-danger">Excluir</button>
             </div>
         </div>
@@ -110,4 +117,5 @@
     <script type="module" src="./src/js/main.js"></script>
 
 </body>
+
 </html>

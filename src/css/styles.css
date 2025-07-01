@@ -71,7 +71,7 @@ body {
 }
 
 #amenities-list input[type="checkbox"]:checked + span {
-    background-color: #4f46e5;
+    background-color: #195a6f;
     color: white;
 }
 
@@ -126,12 +126,12 @@ body {
 }
 
 .btn-primary {
-    background-color: #4f46e5; /* Indigo 600 */
+    background-color: #195a6f;
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #4338ca; /* Indigo 700 */
+    background-color: #134556; /* Tom mais escuro */
     transform: translateY(-2px);
 }
 
@@ -158,8 +158,8 @@ form input, form textarea, form select {
 }
 
 form input:focus, form textarea:focus, form select:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 2px #a5b4fc;
+    border-color: #195a6f;
+    box-shadow: 0 0 0 2px rgba(25, 90, 111, 0.4);
     outline: none;
 }
 
