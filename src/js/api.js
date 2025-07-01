@@ -1,6 +1,6 @@
 // js/api.js
 
-const API_URL = 'https://venuehub-mz9o.onrender.com/';
+const API_URL = 'https://venuehub-mz9o.onrender.com';
 
 /**
  * Funções para comunicar com o json-server
