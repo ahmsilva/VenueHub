@@ -127,8 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (path.startsWith('#venues/') && !path.endsWith('/edit')) {
                 const id = path.split('/')[1];
                 const venue = await api.get(`/locais/${id}`);
-                // CORREÇÃO 1: Comparar IDs como strings
-                const isOwner = auth.isLoggedIn() && auth.getUserId() === venue.usuarioId;
+                const isOwner = auth.isLoggedIn() && String(auth.getUserId()) === String(venue.usuarioId);
                 appRoot.innerHTML = templates.venueDetailsPage(venue, isOwner);
             } else if (path === '#login') {
                 if (auth.isLoggedIn()) return location.hash = '#profile';
@@ -140,11 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!auth.isLoggedIn()) return location.hash = '#login';
                 
                 let venue = {};
+                const user = auth.getUser();
+
                 if (path.endsWith('/edit')) {
                     const id = path.split('/')[1];
                     venue = await api.get(`/locais/${id}`);
-                    // CORREÇÃO 2: Comparar IDs como strings para permissão de edição
-                    if (auth.getUserId() !== venue.usuarioId) {
+                    // ALTERADO: Permite edição se for proprietário ou admin
+                    if (String(user.id) !== String(venue.usuarioId) && user.role !== 'admin') {
                         alert('Você não tem permissão para editar este local.');
                         return location.hash = '#home';
                     }
@@ -153,11 +154,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 appRoot.innerHTML = templates.venueFormPage(venue);
                 setupFormMasks(); // Aplica as máscaras
             } else if (path === '#profile') {
-                if (!auth.isLoggedIn()) return location.hash = '#profile';
-                const userId = auth.getUserId();
-                const user = await api.get(`/usuarios/${userId}`);
-                const venues = await api.get(`/locais?usuarioId=${userId}`);
-                appRoot.innerHTML = templates.profilePage(user, venues);
+                if (!auth.isLoggedIn()) return location.hash = '#login';
+
+                const user = auth.getUser();
+                
+                // ALTERADO: Lógica de Roteamento Baseada no Papel
+                switch(user.role) {
+                    case 'admin':
+                        const allUsers = await api.get('/usuarios');
+                        const allVenues = await api.get('/locais');
+                        appRoot.innerHTML = templates.adminDashboardPage(user, allUsers, allVenues);
+                        break;
+                    case 'proprietario':
+                        const venues = await api.get(`/locais?usuarioId=${user.id}`);
+                        appRoot.innerHTML = templates.profilePage(user, venues);
+                        break;
+                    case 'usuario':
+                        appRoot.innerHTML = templates.userProfilePage(user);
+                        break;
+                    default:
+                        location.hash = '#home'; // Segurança
+                        break;
+                }
             } else {
                 location.hash = '#home';
             }
@@ -174,14 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
         appRoot.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Handler de Login
+            // ALTERADO: Handler de Login para salvar objeto completo
             if (e.target.id === 'login-form') {
                 const email = e.target.email.value;
                 const password = e.target.password.value;
                 const users = await api.get(`/usuarios?email=${email}&senha=${password}`);
                 const errorMessageDiv = document.getElementById('error-message');
                 if (users.length > 0) {
-                    auth.login(users[0].id);
+                    auth.login(users[0]); // Salva o objeto completo
                     updateNav();
                     location.hash = '#profile';
                 } else {
@@ -190,19 +208,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Handler de Cadastro
+            // ALTERADO: Handler de Cadastro para incluir papel e preferências
             if (e.target.id === 'register-form') {
                 const name = e.target.name.value;
                 const email = e.target.email.value;
                 const password = e.target.password.value;
+                const role = e.target.role.value;
+                
+                const preferencias = role === 'usuario' 
+                    ? Array.from(e.target.querySelectorAll('input[name="preferencia"]:checked')).map(cb => cb.value)
+                    : [];
+
                 const existingUsers = await api.get(`/usuarios?email=${email}`);
                 const errorMessageDiv = document.getElementById('error-message');
+                
                 if (existingUsers.length > 0) {
                     errorMessageDiv.textContent = 'Este email já está cadastrado.';
                     errorMessageDiv.classList.remove('hidden');
                 } else {
-                    const newUser = await api.post('/usuarios', { nome: name, email, senha: password });
-                    auth.login(newUser.id);
+                    const newUserPayload = { nome: name, email, senha: password, role, preferencias };
+                    const newUser = await api.post('/usuarios', newUserPayload);
+                    auth.login(newUser); // Salva o objeto completo
                     updateNav();
                     location.hash = '#profile';
                 }
@@ -228,10 +254,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     imagemUrl: imageUrl,
                     descricao: e.target.descricao.value,
                     categorias: selectedCategories,
-                    // CORREÇÃO 3: Salvar o ID do usuário como string
                     usuarioId: auth.getUserId(),
-                    amenities: [], // Em um formulário real, coletaríamos isso
-                    unavailable_dates: [] // Em um formulário real, coletaríamos isso
+                    amenities: [], 
+                    unavailable_dates: []
                 };
 
                 try {
@@ -273,10 +298,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     await api.delete(`/locais/${venueIdToDelete}`);
                     alert('Local excluído com sucesso!');
                     modal.classList.add('hidden');
-                    location.hash = '#profile';
+                    // Redireciona para o perfil, que agora pode ser o painel do admin
+                    router(); 
                 } catch (err) {
                     console.error('Erro ao excluir:', err);
                     alert('Não foi possível excluir o local.');
+                }
+            }
+        });
+
+        // NOVO: Listener para controlar a visibilidade das preferências no formulário de registro
+        appRoot.addEventListener('change', e => {
+            if (e.target.name === 'role' && e.target.form?.id === 'register-form') {
+                const preferencesSection = document.getElementById('user-preferences-section');
+                if (preferencesSection) {
+                    preferencesSection.style.display = (e.target.value === 'usuario') ? 'block' : 'none';
                 }
             }
         });
@@ -286,52 +322,52 @@ document.addEventListener('DOMContentLoaded', () => {
      * Atualização da Navegação
      */
     const updateNav = () => {
-    const navLinks = document.getElementById('nav-links');
-    const mobileNavLinks = document.getElementById('mobile-nav-links');
-    const isLoggedIn = auth.isLoggedIn();
+        const navLinks = document.getElementById('nav-links');
+        const mobileNavLinks = document.getElementById('mobile-nav-links');
+        const isLoggedIn = auth.isLoggedIn();
 
-    const commonLinks = `
-        <a href="#home" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Home</a>
-        <a href="#locais" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Explorar</a>
-    `;
-    const loggedOutLinks = `
-        <a href="#login" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Login</a>
-        <a href="#register" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#134556] bg-[#e8f3f6] hover:bg-[#d0e9f0]">Cadastro</a>
-    `;
-    const loggedInLinks = `
-        <a href="#profile" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Meu Perfil</a>
-        <a href="#" id="logout-btn" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Sair</a>
-    `;
-    
-    const mobileCommon = `
-        <a href="#home" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Home</a>
-        <a href="#locais" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Explorar</a>
-    `;
-    const mobileLoggedOut = `
-        <a href="#login" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Login</a>
-        <a href="#register" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Cadastro</a>`;
-    const mobileLoggedIn = `
-        <a href="#profile" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Meu Perfil</a>
-        <a href="#" id="mobile-logout-btn" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Sair</a>`;
+        const commonLinks = `
+            <a href="#home" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Home</a>
+            <a href="#locais" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Explorar</a>
+        `;
+        const loggedOutLinks = `
+            <a href="#login" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Login</a>
+            <a href="#register" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#134556] bg-[#e8f3f6] hover:bg-[#d0e9f0]">Cadastro</a>
+        `;
+        const loggedInLinks = `
+            <a href="#profile" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Meu Perfil</a>
+            <a href="#" id="logout-btn" class="text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-sm font-medium">Sair</a>
+        `;
+        
+        const mobileCommon = `
+            <a href="#home" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="#locais" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Explorar</a>
+        `;
+        const mobileLoggedOut = `
+            <a href="#login" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Login</a>
+            <a href="#register" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Cadastro</a>`;
+        const mobileLoggedIn = `
+            <a href="#profile" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Meu Perfil</a>
+            <a href="#" id="mobile-logout-btn" class="block text-gray-700 hover:text-[#195a6f] px-3 py-2 rounded-md text-base font-medium">Sair</a>`;
 
-    navLinks.innerHTML = isLoggedIn ? commonLinks + loggedInLinks : commonLinks + loggedOutLinks;
-    mobileNavLinks.innerHTML = isLoggedIn ? mobileCommon + mobileLoggedIn : mobileCommon + mobileLoggedOut;
+        navLinks.innerHTML = isLoggedIn ? commonLinks + loggedInLinks : commonLinks + loggedOutLinks;
+        mobileNavLinks.innerHTML = isLoggedIn ? mobileCommon + mobileLoggedIn : mobileCommon + mobileLoggedOut;
 
-    document.querySelectorAll('#logout-btn, #mobile-logout-btn').forEach(btn => {
-        const newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
-        newBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            auth.logout();
-            updateNav();
-            location.hash = '#home';
+        document.querySelectorAll('#logout-btn, #mobile-logout-btn').forEach(btn => {
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+            newBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                auth.logout();
+                updateNav();
+                location.hash = '#home';
+            });
         });
-    });
 
-    document.getElementById('mobile-menu-button').addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
-};
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    };
 
     /**
      * Inicialização da Aplicação

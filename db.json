@@ -4,19 +4,59 @@
       "id": "1",
       "nome": "Ana Clara",
       "email": "ana@email.com",
-      "senha": "123"
+      "senha": "123",
+      "role": "proprietario"
     },
     {
       "id": "2",
       "nome": "Bruno Costa",
       "email": "bruno@email.com",
-      "senha": "456"
+      "senha": "456",
+      "role": "proprietario"
     },
     {
       "id": "7568",
       "nome": "Raff Sigma",
       "email": "raff@gmail.com",
-      "senha": "123"
+      "senha": "123",
+      "role": "proprietario"
+    },
+    {
+      "id": "admin001",
+      "nome": "Admin VenueHub",
+      "email": "admin@venuehub.com",
+      "senha": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "user001",
+      "nome": "Carlos Silva",
+      "email": "carlos@email.com",
+      "senha": "789",
+      "role": "usuario",
+      "preferencias": [
+        "Casamento",
+        "Ao ar livre"
+      ]
+    },
+    {
+      "id": "1dc8",
+      "nome": "André Henrique",
+      "email": "andre.henri2004@gmail.com",
+      "senha": "123",
+      "role": "usuario",
+      "preferencias": [
+        "Casamento",
+        "Corporativo"
+      ]
+    },
+    {
+      "id": "6add",
+      "nome": "Rebekah Silva",
+      "email": "rebeka@email.com",
+      "senha": "123",
+      "role": "proprietario",
+      "preferencias": []
     }
   ],
   "locais": [
@@ -35,36 +75,29 @@
         "Aniversário",
         "Corporativo"
       ],
-      "usuarioId": 1,
+      "usuarioId": "admin001",
       "amenities": [],
       "unavailable_dates": [],
       "id": "1"
     },
     {
-      "id": "2",
-      "usuarioId": 1,
       "nome": "Espaço Verde Eventos",
       "endereco": "Avenida dos Jardins, 456, Bairro Floresta",
       "cidade": "Contagem",
       "estado": "MG",
-      "telefone": "31988882222",
-      "descricao": "Local ao ar livre com vasta área verde, ideal para eventos diurnos e cerimônias.",
       "capacidade": 300,
-      "preco": "35000.00",
+      "telefone": "31988882222",
+      "preco": "35000",
+      "imagemUrl": "./src/img/local2.jpg",
+      "descricao": "Local ao ar livre com vasta área verde, ideal para eventos diurnos e cerimônias.",
       "categorias": [
         "Casamento",
         "Ao ar livre"
       ],
-      "amenities": [
-        "Área Externa",
-        "Estacionamento",
-        "Permite Pets",
-        "Piscina"
-      ],
-      "unavailable_dates": [
-        "2025-07-25"
-      ],
-      "imagemUrl": "./src/img/local2.jpg"
+      "usuarioId": "admin001",
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "2"
     },
     {
       "nome": "Auditório Central Tech",
@@ -80,7 +113,7 @@
         "Corporativo",
         "Palestra"
       ],
-      "usuarioId": 2,
+      "usuarioId": "admin001",
       "amenities": [],
       "unavailable_dates": [],
       "id": "3"
@@ -99,7 +132,7 @@
         "Aniversário",
         "Corporativo"
       ],
-      "usuarioId": 2,
+      "usuarioId": "admin001",
       "amenities": [],
       "unavailable_dates": [],
       "id": "4"
@@ -142,7 +175,7 @@
         "Casamento",
         "Ao ar livre"
       ],
-      "usuarioId": 2,
+      "usuarioId": "admin001",
       "amenities": [],
       "unavailable_dates": [],
       "id": "6"
@@ -154,7 +187,7 @@
       "estado": "MG",
       "capacidade": 250,
       "telefone": "31944447777",
-      "preco": "150000",
+      "preco": "550000",
       "imagemUrl": "./src/img/local10.jpg",
       "descricao": "Um salão com arquitetura clássica, perfeito para eventos formais e cerimônias de gala.",
       "categorias": [
@@ -181,33 +214,29 @@
         "Aniversário",
         "Ao ar livre"
       ],
-      "usuarioId": 2,
+      "usuarioId": "admin001",
       "amenities": [],
       "unavailable_dates": [],
       "id": "8"
     },
     {
-      "id": "9",
-      "usuarioId": 1,
       "nome": "Estúdio Fotográfico Moderno",
       "endereco": "Rua Augusta, 900",
       "cidade": "São Paulo",
       "estado": "SP",
-      "telefone": "11966669999",
-      "descricao": "Estúdio com fundo infinito e iluminação profissional, perfeito para workshops e pequenas palestras.",
       "capacidade": 40,
-      "preco": "950.00",
+      "telefone": "11966669999",
+      "preco": "9500",
+      "imagemUrl": "./src/img/local9.jpg",
+      "descricao": "Estúdio com fundo infinito e iluminação profissional, perfeito para workshops e pequenas palestras.",
       "categorias": [
-        "Palestra",
-        "Corporativo"
+        "Corporativo",
+        "Palestra"
       ],
-      "amenities": [
-        "Wi-Fi",
-        "Projetor",
-        "Ar Condicionado"
-      ],
+      "usuarioId": "admin001",
+      "amenities": [],
       "unavailable_dates": [],
-      "imagemUrl": "./src/img/local9.jpg"
+      "id": "9"
     },
     {
       "nome": "Churrascaria Gaúcha",
@@ -223,7 +252,7 @@
         "Aniversário",
         "Corporativo"
       ],
-      "usuarioId": 2,
+      "usuarioId": "admin001",
       "amenities": [],
       "unavailable_dates": [],
       "id": "10"
@@ -246,6 +275,43 @@
       "amenities": [],
       "unavailable_dates": [],
       "id": "2205"
+    },
+    {
+      "id": "f1b5",
+      "nome": "Blabla",
+      "endereco": "teste",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "capacidade": 123,
+      "telefone": "12933336666",
+      "preco": "1800",
+      "imagemUrl": "./src/img/teste",
+      "descricao": "teste",
+      "categorias": [
+        "Palestra"
+      ],
+      "usuarioId": "6add",
+      "amenities": [],
+      "unavailable_dates": []
+    },
+    {
+      "nome": "Burj Khalifa",
+      "endereco": " Sheikh Mohammed bin Rashid Blvd - Downtown Dubai",
+      "cidade": "Dubai",
+      "estado": "DU",
+      "capacidade": 300,
+      "telefone": "11911114444",
+      "preco": "6000",
+      "imagemUrl": "./src/img/local14.webp",
+      "descricao": "Burj Khalifa, anteriormente conhecido como Burj Dubai, é um arranha-céu localizado em Dubai, nos Emirados Árabes Unidos, sendo a mais alta estrutura e, consequentemente, o maior arranha-céu já construído pelo ser humano, com 828 metros de altura e 160 andares.",
+      "categorias": [
+        "Corporativo",
+        "Ao ar livre"
+      ],
+      "usuarioId": "2",
+      "amenities": [],
+      "unavailable_dates": [],
+      "id": "e9e6"
     }
   ]
 }

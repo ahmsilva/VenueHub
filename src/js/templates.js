@@ -1,5 +1,8 @@
 // src/js/templates.js
 
+// NOVO: Importa o módulo de autenticação para usar nas lógicas de template
+import { auth } from './auth.js';
+
 const allAmenities = ["Cozinha Equipada", "Ar Condicionado", "Wi-Fi", "Estacionamento", "Área Externa", "Permite Pets", "Projetor", "Acessibilidade", "Piscina"];
 const allCategories = ["Casamento", "Aniversário", "Corporativo", "Palestra", "Ao ar livre", "Show/Concerto"];
 
@@ -15,7 +18,7 @@ const formatPrice = (value) => {
 };
 
 /**
-
+ * Formata um número de telefone.
  * @param {string} value - O número de telefone não formatado.
  * @returns {string} O telefone formatado.
  */
@@ -165,7 +168,8 @@ export const templates = {
                     </div>
                 </div>
 
-                ${owner ? `
+                ${ // ALTERADO: Permite que o proprietário OU o admin vejam os botões
+                  (owner || (auth.getUser() && auth.getUser().role === 'admin')) ? `
                 <div class="mt-8 border-t pt-6 flex items-center space-x-4">
                     <a href="#venues/${venue.id}/edit" class="btn btn-primary">Editar</a>
                     <button data-venue-id="${venue.id}" class="delete-btn btn btn-danger">Excluir</button>
@@ -201,7 +205,7 @@ export const templates = {
             </div>
         </div>
     `,
-    // Template para formulário de Cadastro
+    // ALTERADO: Template para formulário de Cadastro com seleção de papel
     registerPage: () => `
          <div class="fade-in flex justify-center">
             <div class="w-full max-w-md">
@@ -220,6 +224,33 @@ export const templates = {
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Senha</label>
                         <input class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none" id="password" type="password" placeholder="******************" required>
                     </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Qual o seu objetivo?</label>
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="role" value="usuario" class="form-radio" checked>
+                                <span class="ml-2">Buscar um local para evento</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="role" value="proprietario" class="form-radio">
+                                <span class="ml-2">Anunciar um local</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="user-preferences-section" class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Quais tipos de eventos você mais procura?</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            ${allCategories.map(cat => `
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" name="preferencia" value="${cat}" class="rounded border-gray-300 text-[#195a6f] shadow-sm">
+                                    <span>${cat}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+
                     <div class="flex items-center justify-between">
                          <button class="btn btn-primary w-full" type="submit">
                             Cadastrar
@@ -251,7 +282,7 @@ export const templates = {
                         <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="imagem">Nome do Arquivo de Imagem</label>
                             <input class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700" id="imagem" type="text" placeholder="ex: meu-local.jpg" value="${imageName}" required>
-                            <p class="text-xs text-gray-500 mt-1">Adicione o nome da imagem</p>
+                            <p class="text-xs text-gray-500 mt-1">A imagem deve ser adicionada manualmente na pasta 'src/img' do projeto.</p>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -308,12 +339,13 @@ export const templates = {
         </div>
         `;
     },
-    // Template da Página de Perfil
+    // Template da Página de Perfil do Proprietário
     profilePage: (user, venues) => `
         <div class="fade-in">
             <div class="bg-white p-8 rounded-lg shadow-md">
                 <h1 class="text-3xl font-bold text-gray-800">Perfil de ${user.nome}</h1>
                 <p class="text-lg text-gray-600">${user.email}</p>
+                <span class="mt-2 inline-block bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Proprietário</span>
             </div>
 
             <div class="mt-8">
@@ -327,6 +359,75 @@ export const templates = {
             </div>
         </div>
     `,
+    // NOVO: Template para o perfil do usuário comum
+    userProfilePage: (user) => `
+        <div class="fade-in">
+            <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                <h1 class="text-3xl font-bold text-gray-800">Perfil de ${user.nome}</h1>
+                <p class="text-lg text-gray-600">${user.email}</p>
+                <span class="mt-2 inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">Usuário/Cliente</span>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Minhas Preferências de Evento</h2>
+                <p class="text-gray-600 mb-4">Estes são os tipos de evento que você mais se interessa:</p>
+                <div class="flex flex-wrap gap-2">
+                    ${(user.preferencias && user.preferencias.length > 0) ? user.preferencias.map(p => `<span class="bg-gray-200 text-gray-800 py-1 px-3 rounded-full">${p}</span>`).join('') : '<p>Você ainda não definiu suas preferências.</p>'}
+                </div>
+                <button class="btn btn-primary mt-6">Editar Preferências</button>
+            </div>
+        </div>
+    `,
+
+    // NOVO: Templates para o Painel do Administrador
+    adminUserRow: (user) => `
+        <tr class="border-b">
+            <td class="p-3">${user.nome}</td>
+            <td class="p-3">${user.email}</td>
+            <td class="p-3 capitalize">${user.role}</td>
+            <td class="p-3">
+                <button class="text-red-500 hover:text-red-700">Excluir</button>
+            </td>
+        </tr>
+    `,
+    adminVenueRow: (venue) => `
+        <tr class="border-b">
+            <td class="p-3"><a href="#venues/${venue.id}" class="text-blue-600 hover:underline">${venue.nome}</a></td>
+            <td class="p-3">${venue.cidade}</td>
+            <td class="p-3">
+                <a href="#venues/${venue.id}/edit" class="text-blue-500 hover:text-blue-700 mr-4">Editar</a>
+                <button data-venue-id="${venue.id}" class="delete-btn text-red-500 hover:text-red-700">Excluir</button>
+            </td>
+        </tr>
+    `,
+    adminDashboardPage: (user, allUsers, allVenues) => `
+        <div class="fade-in">
+            <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                <h1 class="text-3xl font-bold text-gray-800">Painel do Administrador</h1>
+                <p class="text-lg text-gray-600">Bem-vindo, ${user.nome}.</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Gerenciar Usuários</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead><tr class="border-b"><th class="p-3">Nome</th><th class="p-3">Email</th><th class="p-3">Papel</th><th class="p-3">Ações</th></tr></thead>
+                        <tbody>${allUsers.filter(u => u.id !== user.id).map(templates.adminUserRow).join('')}</tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Gerenciar Todos os Locais</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead><tr class="border-b"><th class="p-3">Nome do Local</th><th class="p-3">Cidade</th><th class="p-3">Ações</th></tr></thead>
+                        <tbody>${allVenues.map(templates.adminVenueRow).join('')}</tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    `,
+
     // Template de Loading
     loading: () => `<div class="text-center text-gray-500 py-16"><p>Carregando...</p></div>`,
     // Template de Erro
