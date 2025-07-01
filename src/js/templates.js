@@ -251,7 +251,7 @@ export const templates = {
                         <div>
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="imagem">Nome do Arquivo de Imagem</label>
                             <input class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700" id="imagem" type="text" placeholder="ex: meu-local.jpg" value="${imageName}" required>
-                            <p class="text-xs text-gray-500 mt-1">A imagem deve ser adicionada manually na pasta 'src/img' do projeto.</p>
+                            <p class="text-xs text-gray-500 mt-1">Adicione o nome da imagem</p>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
