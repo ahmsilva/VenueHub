@@ -27,7 +27,7 @@
       "estado": "MG",
       "capacidade": 200,
       "telefone": "31999991111",
-      "preco": "250000",
+      "preco": "25000",
       "imagemUrl": "./src/img/ceuazul.jpeg",
       "descricao": "Um espaço amplo e moderno, perfeito para casamentos, aniversários e eventos corporativos.",
       "categorias": [
@@ -50,7 +50,7 @@
       "telefone": "31988882222",
       "descricao": "Local ao ar livre com vasta área verde, ideal para eventos diurnos e cerimônias.",
       "capacidade": 300,
-      "preco": "3500.00",
+      "preco": "35000.00",
       "categorias": [
         "Casamento",
         "Ao ar livre"
@@ -73,7 +73,7 @@
       "estado": "MG",
       "capacidade": 150,
       "telefone": "31977773333",
-      "preco": "180000",
+      "preco": "18000",
       "imagemUrl": "./src/img/local5.jpg",
       "descricao": "Auditório moderno com equipamentos de última geração para palestras, workshops e conferências.",
       "categorias": [
@@ -92,7 +92,7 @@
       "estado": "SP",
       "capacidade": 80,
       "telefone": "11911114444",
-      "preco": "450000",
+      "preco": "45000",
       "imagemUrl": "./src/img/local3.jpg",
       "descricao": "Vista deslumbrante da cidade, ideal para coquetéis e eventos sociais exclusivos.",
       "categorias": [
@@ -135,7 +135,7 @@
       "estado": "SP",
       "capacidade": 60,
       "telefone": "12933336666",
-      "preco": "280000",
+      "preco": "28000",
       "imagemUrl": "./src/img/local12.png",
       "descricao": "Refúgio charmoso nas montanhas, ideal para casamentos intimistas e retiros corporativos.",
       "categorias": [
@@ -154,7 +154,7 @@
       "estado": "MG",
       "capacidade": 250,
       "telefone": "31944447777",
-      "preco": "550000",
+      "preco": "150000",
       "imagemUrl": "./src/img/local10.jpg",
       "descricao": "Um salão com arquitetura clássica, perfeito para eventos formais e cerimônias de gala.",
       "categorias": [
@@ -173,7 +173,7 @@
       "estado": "RJ",
       "capacidade": 180,
       "telefone": "21955558888",
-      "preco": "600000",
+      "preco": "60000",
       "imagemUrl": "./src/img/local8.jpeg",
       "descricao": "Localização privilegiada com vista para o mar, ideal para festas de ano novo e eventos de verão.",
       "categorias": [
@@ -216,7 +216,7 @@
       "estado": "MG",
       "capacidade": 120,
       "telefone": "31977770000",
-      "preco": "150000",
+      "preco": "15000",
       "imagemUrl": "./src/img/local13.jpg",
       "descricao": "Amplo salão com churrasqueira profissional, ideal para confraternizações e aniversários.",
       "categorias": [
